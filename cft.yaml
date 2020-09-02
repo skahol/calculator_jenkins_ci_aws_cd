@@ -10,3 +10,5 @@ Resources:
             CodeUri: ./calcu/Calculator.py
             Description: AWS LAMBDA of Calculator-app
             Timeout: 10
+            Role: arn:aws:iam::001082169132:role/calculator_role
+            

@@ -20,3 +20,7 @@ class BasicCalculatorTest(unittest.TestCase):
     def test_divide(self):
         result = divide(4, 2)
         self.assertEqual(2, result)
+
+if __name__ == '__main__':
+    unittest.main()
+    

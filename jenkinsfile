@@ -1,0 +1,26 @@
+pipeline{
+    agent {
+        docker {
+            image 'ubuntu:latest'
+        }
+    }
+
+    stages {
+        stage('Build'){
+            steps{
+                echo 'Building..'
+                sh "sam build"
+            }
+        }
+        stage('Test'){
+            steps{
+                
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo 'Deploying..'
+            }
+        }
+    }
+}
