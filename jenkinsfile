@@ -1,14 +1,11 @@
 pipeline{
-    agent none
-    stages {
-        stage('test-case'){
-            agent { docker 'python:3.8' }
-            steps{
-                sh 'python ./calcu/test.py'
-            }
+    agent {
+        docker {
+            image 'ubuntu:latest'
         }
+    }
+    stages {
         stage('build-package'){
-            agent { docker 'ubuntu:latest' }
             steps{
                 sh """
                 sam build && sam package --template-file cft.yaml --s3-bucket saksham2 --output-template-file packaged-lambda.yaml
