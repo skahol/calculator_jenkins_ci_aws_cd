@@ -1,5 +1,5 @@
 pipeline{
-    agent none
+    agent any
     stages {
         stage('test-case'){
             agent { docker 'python:3.8' }
