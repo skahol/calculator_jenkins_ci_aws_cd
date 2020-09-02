@@ -1,9 +1,14 @@
 pipeline{
-    agent any
+    agent {
+        docker {
+            image 'ubuntu:latest'
+        }
+    }
     stages {
         stage('build-package'){
             steps{
                 sh """
+                cat /etc/lsb-release
                 sam build && sam package --template-file cft.yaml --s3-bucket saksham2 --output-template-file packaged-lambda.yaml
                 sam deploy --template-file packaged-lambda.yaml --stack-name JenkinPipelineCalculatorApp --capabilities CAPABILITY_IAM
                 """
