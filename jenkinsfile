@@ -10,7 +10,10 @@ pipeline{
         stage('build-package'){
             agent { docker 'ubuntu:latest' }
             steps{
-                sh 'sam build'
+                sh """
+                sam build && sam package --template-file cft.yaml --s3-bucket saksham2 --output-template-file packaged-lambda.yaml
+                sam deploy --template-file packaged-lambda.yaml --stack-name JenkinPipelineCalculatorApp --capabilities CAPABILITY_IAM
+                """
             }
         }
     }
