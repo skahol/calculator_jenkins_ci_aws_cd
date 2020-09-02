@@ -1,25 +1,16 @@
 pipeline{
-    agent {
-        docker {
-            image 'ubuntu:latest'
-        }
-    }
-
+    agent none
     stages {
-        stage('Build'){
+        stage('test-case'){
+            agent { docker 'python:3.8' }
             steps{
-                echo 'Building..'
-                sh "sam build"
+                sh 'python ./calcu/test.py'
             }
         }
-        stage('Test'){
+        stage('build-package'){
+            agent { docker 'ubuntu:latest' }
             steps{
-                
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo 'Deploying..'
+                sh 'sam build'
             }
         }
     }
