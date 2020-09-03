@@ -3,8 +3,9 @@ pipeline{
     stages {
         stage('unit-testing'){
             steps{
-                sh 'python ./calcu/test.py'
+                bat 'python calcu/test.py'
             }
         }
     }
+    
 }
