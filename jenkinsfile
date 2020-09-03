@@ -6,8 +6,7 @@ pipeline{
                 bat 'python calcu/test.py'
             }
         }
-    }
-    stage('build-package'){
+        stage('build-package'){
             steps{
                 bat """
                 sam build && sam package --template-file cft.yaml --s3-bucket saksham2 --output-template-file packaged-lambda.yaml
@@ -15,5 +14,6 @@ pipeline{
                 """
             }
         }
+    }
 }
 
