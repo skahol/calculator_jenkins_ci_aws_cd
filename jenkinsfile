@@ -1,25 +1,21 @@
 pipeline{
-    agent {
-        docker {
-            image 'ubuntu:latest'
-        }
-    }
+    agent none
     stages {
         stage('unit-testing'){
             steps{
-                sh 'python calcu/test.py'
+                bat 'python calcu/test.py'
             }
         }
         stage('build-package'){
             steps{
-                sh """
+                bat """
                 sam package --template-file cft.yaml --s3-bucket saksham2 --output-template-file packaged-lambda.yaml
                 """
             }
         }
         stage('deploy'){
             steps{
-                sh """
+                bat """
                 sam deploy --template-file packaged-lambda.yaml --stack-name JenkinPipelineCalculatorApp --capabilities CAPABILITY_IAM
                 """
             }
