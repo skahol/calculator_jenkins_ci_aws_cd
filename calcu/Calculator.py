@@ -23,9 +23,9 @@ def lambda_handler(event, context):
 
         if choice in ('1', '2', '3', '4'):
             print("Enter first number : ")
-            num1 = event['f_num']
+            num1 = int(event['f_num'])
             print("Enter second number : ")
-            num2 = event['s_num']
+            num2 = int(event['s_num'])
 
             if choice == '1':
                 print(num1, "+", num2, "=", add(num1, num2))
