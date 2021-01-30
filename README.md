@@ -1,2 +1,2 @@
 Simple Calculator Program using PYTHON
---> takes two number from user as input
+--> takes two number as input
